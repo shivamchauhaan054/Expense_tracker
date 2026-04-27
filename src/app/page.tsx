@@ -71,8 +71,7 @@ export default function HomePage() {
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">Personal Finance</p>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Expense Dashboard</h1>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Fenmo Expense Tracker</h1>
           </div>
           <ThemeToggle />
         </div>
