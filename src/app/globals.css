@@ -3,5 +3,26 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-50 text-slate-900;
+  @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
+}
+
+::selection {
+  @apply bg-indigo-100 text-indigo-900 dark:bg-indigo-500/40 dark:text-indigo-100;
+}
+
+main,
+header,
+section,
+article,
+input,
+textarea,
+select,
+button,
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+  @apply transition-colors duration-300;
 }

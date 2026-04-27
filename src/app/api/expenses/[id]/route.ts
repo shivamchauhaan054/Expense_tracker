@@ -3,11 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const updateExpenseSchema = z.object({
-  title: z.string().trim().min(1).optional(),
-  amount: z.number().positive().optional(),
-  category: z.string().trim().optional(),
-  spentAt: z.string().datetime().optional(),
-  notes: z.string().trim().optional()
+  amount: z.number().int().positive().max(999999999).optional(),
+  category: z.string().trim().min(1).max(50).optional(),
+  description: z.string().trim().max(500).optional(),
+  date: z.string().datetime().optional()
 });
 
 type RouteContext = {
@@ -22,11 +21,10 @@ export async function PATCH(request: NextRequest, { params }: RouteContext) {
     const expense = await prisma.expense.update({
       where: { id: params.id },
       data: {
-        title: data.title,
         amount: data.amount,
         category: data.category,
-        spentAt: data.spentAt ? new Date(data.spentAt) : undefined,
-        notes: data.notes
+        description: data.description,
+        date: data.date ? new Date(data.date) : undefined
       }
     });
 
