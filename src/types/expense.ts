@@ -1,18 +1,18 @@
 export type Expense = {
   id: string;
-  title: string;
+  // Stored in smallest unit (e.g. cents/paise)
   amount: number;
-  category: string | null;
-  spentAt: string;
-  notes: string | null;
+  category: string;
+  description: string | null;
+  date: string;
   createdAt: string;
-  updatedAt: string;
+  idempotencyKey: string;
 };
 
 export type CreateExpenseInput = {
-  title: string;
   amount: number;
-  category?: string;
-  spentAt: string;
-  notes?: string;
+  category: string;
+  description?: string;
+  date: string;
+  idempotencyKey: string;
 };
