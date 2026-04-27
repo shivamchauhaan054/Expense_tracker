@@ -8,15 +8,15 @@ datasource db {
 }
 
 model Expense {
-  id          String   @id @default(cuid())
-  title       String
-  amount      Float
-  category    String?
-  spentAt     DateTime
-  notes       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(cuid())
+  // Store money as smallest unit (e.g. paise/cents) to avoid floating-point errors.
+  amount         Int
+  category       String
+  description    String?
+  date           DateTime
+  createdAt      DateTime @default(now())
+  idempotencyKey String   @unique
 
-  @@index([spentAt])
+  @@index([date])
   @@index([category])
 }
