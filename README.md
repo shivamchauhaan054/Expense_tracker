@@ -1,6 +1,6 @@
 # Fenmo Expense Tracker
 
-A modern, full-stack expense tracking application built for the Fenmo assignment. It leverages Next.js 14, TypeScript, Tailwind CSS, Prisma, and SQLite to deliver a fast, responsive, and robust financial dashboard.
+A modern, full-stack expense tracking application built for the Fenmo assignment. It leverages Next.js 14, TypeScript, Tailwind CSS, Prisma, and PostgreSQL (via Neon) to deliver a fast, responsive, and robust financial dashboard.
 
 ## Quick Start
 
@@ -9,7 +9,7 @@ A modern, full-stack expense tracking application built for the Fenmo assignment
 npm install
 ```
 
-2. Create the environment file:
+2. Create the environment file and add your PostgreSQL credentials:
 ```bash
 copy .env.example .env
 ```
@@ -32,7 +32,7 @@ Visit `http://localhost:3000` to view the application.
 - **Frontend**: Next.js 14 App Router, using Client Components (`"use client"`) for interactivity (forms, filtering, dynamic lists).
 - **Backend**: Next.js Route Handlers (`src/app/api/...`) providing a clean RESTful API interface.
 - **Styling**: Tailwind CSS with native Dark Mode support and responsive design.
-- **Database**: SQLite handled through Prisma ORM for strict type-safety and seamless migrations.
+- **Database**: PostgreSQL handled through Prisma ORM for strict type-safety and scalability.
 
 ## API Endpoints
 
@@ -47,7 +47,7 @@ Visit `http://localhost:3000` to view the application.
 
 ### Key Design Decisions
 - **Next.js App Router**: Chosen for its seamless integration of frontend UI and backend API routes. This eliminates the overhead of running and maintaining a separate backend service.
-- **SQLite over PostgreSQL/MySQL**: Selected to ensure the application is portable and immediately runnable by reviewers without requiring external database servers or Docker containers.
+- **PostgreSQL (Neon/Vercel)**: Switched from SQLite to a managed PostgreSQL database to ensure "error-free" deployment on Vercel's serverless infrastructure (which has a read-only filesystem).
 - **Zod Validation**: Used extensively for strict payload validation in the API. It guarantees that malformed data never touches the database and provides excellent TypeScript inference.
 - **Idempotency Keys**: Implemented on the `POST` endpoint to safely handle network retries and prevent accidental duplicate expense submissions.
 
